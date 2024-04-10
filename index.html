@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Echoes of Destiny renderd by EIGEN</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Intro -->
+		<div id="intro">
+			<h1>Echoes of Destiny<br />
+			</h1>
+			<p>We rendered our scene in 4K resolution with 1000 samples<a target="_blank" href="./images/final.jpeg"> <span
+						style="color:#18bfef !important;font-weight: 700;">
+						(Click here to check it out)</span></a>!</p>
+			<ul class="actions">
+				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+			</ul>
+		</div>
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Echoes of Destiny</a>
+		</header>
+
+		<!-- Nav -->
+		<!-- <nav id="nav">
+			<ul class="links">
+				<li class="active"><a href="index.html">Story</a></li>
+			</ul>
+		</nav> -->
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Featured Post -->
+			<article class="post featured">
+				<header class="major">
+					<h2><a href="#">Story</h2>
+					<!-- <p> A long time ago in a galaxy far, far away...
+						<br>
+						The echoes of the Galactic Civil War had finally subsided, and a new dawn emerged as Rey,
+						the last hope of the Jedi, stood triumphant against the malevolent Emperor Palpatine. With
+						the Sith defeated and the galaxy on the path to healing, Rey sought to breathe life back
+						into the legacy of the Jedi Order.<br> In her quest for knowledge and guidance, whispers of
+						ancient Zeffo artifacts reached Rey's ears. Legends spoke of mystical relics hidden within
+						the sacred halls of the Zeffo palace, artifacts that held the potential to shape the destiny
+						of the Jedi and the galaxy itself. With her faithful droid companion, BB-8, by her side, Rey
+						ventured to a distant and mysterious planet, a world shrouded in the enigma of the Force.
+						The planet's name, known only to a chosen few, echoed through the cosmos – Celestria.<br> Upon
+						the horizon of this alien world, the Zeffo palace loomed, a testament to a bygone era of
+						power and wisdom. Rey, driven by a sense of duty, embarked on a perilous journey to uncover
+						the secrets within its ancient walls, knowing that the fate of the Jedi Order rested on her
+						shoulders.
+					</p> -->
+					<video width="90%" controls>
+						<source src="images/video_cropped.mp4" type="video/mp4">
+						<source src="images/video_cropped.webm" type="video/webm">
+					  	Your browser does not support the video tag.
+					</video> 
+				</header>
+				<a href="#" class="image main"></a>
+				<header class="major">
+					<h2>Features</h2>
+				</header>
+			</article>
+
+			<!-- Posts -->
+			<section class="posts">
+
+				<article>
+					<header>
+						<span class="date">Feature 1</span>
+						<h2><a href="#">Alpha masking</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/scene_am.png" alt="" /></a>
+					<p>When combined with a texture, Alpha Masking enhances the representation of grass and trees,
+						creating a more realistic
+						effect. This technique selectively removes portions of meshes by ignoring interactions based on
+						alpha values,
+						particularly useful for crafting sharp and natural edges and corners for leaves. One effective
+						strategy for improvement
+						involves allowing rays to traverse based on a stochastic threshold.
+						<br>For our scene, we used alpha masking for the leaves of the trees, the grass, and the
+						flowers.
+					</p>
+
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 2</span>
+						<h2><a href="#">Normal mapping</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/scene_nm.png" alt="" /></a>
+					<p>For normal mapping, we referenced this <a
+							href="https://ogldev.org/www/tutorial26/tutorial26.html">article</a>
+						. A major challenge we
+						encountered with normal mapping was understanding the OpenGL code and what it represented in the
+						Lightwave framework.
+						Once we resolved this issue, the mapping algorithm became clear, and we achieved satisfactory
+						results.<br>For our scene, we used normal mapping for almost all of the objects.</p>
+
+				</article>
+
+				<article>
+					<header>
+						<span class="date">Feature 3</span>
+						<h2><a href="#">Area lights</a>
+							<br>
+							<a style="visibility: hidden;">Area lights</a>
+						</h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/arealight_show.png" alt="" /></a>
+					<p>Area lighting pertains to illuminating the surfaces of objects, like spheres or rectangles, by
+						utilizing light sources
+						that emanate from these surfaces. In comparison to sampling from an emissive object, area lights
+						show reduced variance
+						due to their contribution being proportional to the surface area.
+						<br>For our scene, we used a single area light on the left side of the two characters to add a
+						bit more lighting.
+					</p>
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 4</span>
+						<h2><a href="#">Improved <br> Environment Sampling</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/is_showcase.png" alt="" /></a>
+					<p>A painful implementation but it allows us to render scenes with lower-variance light sources
+						originating from an environment map.
+						The idea is to sample environmental light with higher luminance probability more often. To speed
+						up the
+						rendering process, we can precompute probability density functions (pdfs) and cumulative
+						distribution functions (cdfs) of luminance.
+					</p>
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 5</span>
+						<h2><a href="#">Thinlens camera</h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/thinlens.png" alt="" /></a>
+					<p>The implementation of the thin lens camera utilizes the lens radius and focal length to achieve
+						the depth of field
+						effect. The lens radius controls the amount of blur in the scene; greater radius results in more
+						significant blur.<br>For our scene, we used a lens radius of 0.005 and focal length of 0.858 to
+						add only a very slight blur since this camera shot didn't require high blurring for a natural
+						look.</p>
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 6</span>
+						<h2><a href="#"> Denoising</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/denoise_showcase.png" alt="" /></a>
+					<p>Denoising is employed to eliminate Monte Carlo noise inherent in stochastic ray tracing methods.
+						In our rendering
+						pipeline, we integrate a potent <a href="https://www.openimagedenoise.org/">denoising
+							library</a> during the
+						post-processing stage. This integration aims to preserve as many details as possible by
+						leveraging normal and albedo features.
+					</p>
+
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 7</span>
+						<h2><a href="#">post-process<br> Tone mapping</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/postprocess_output_showcase.png" alt="" /></a>
+					<p>For tone mapping, we referred to the
+						<a href=https://graphics-programming.org/resources/tonemapping/index.html">article</a>. We
+						have implemented seven methods from this article, namely Reinhard tone mapping, Reinhard-Jodie
+						tone mapping, Uncharted 2
+						tone mapping, ACES tone mapping, ACES tone mapping (worse fit), Extended Reinhard tonemapping,
+						and Extended Reinhard Luminance tonemapping.<br>For our scene, we chose ACES tone mapping (worse
+						fit).
+					</p>
+				</article>
+				<article>
+					<header>
+						<span class="date">Feature 8</span>
+						<h2><a href="#">post-process<br>Bloom</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/bloom_showcase.png" alt="" /></a>
+					<p>To implement bloom, we chose a 1-D Gaussian kernel. We first extracted the brightest pixels from
+						our image, and then applied blur, first horizontally and then vertically. Our bloom
+						postprocessing
+						also has a choice to perform this blurring for a given amount of times to get a better blur
+						effect.
+						We then add this blurred image with our original image to finally get our postprocessed
+						output.<br>
+						For our scene, we used bloom specifically to add the natural glow around the lightsaber.
+					</p>
+				</article>
+			</section>
+
+			<section class="split contact">
+				<header class="major">
+					<h2>Third-party Assets</h2>
+				</header>
+				<section class="alt">
+					<ul class="icons alt" style="text-align: center;">
+						<li><a
+								href="https://docs.blender.org/manual/en/latest/addons/add_mesh/ant_landscape.html">Landscape</a>
+						</li>
+						<li><a href="https://sketchfab.com/3d-models/bb8-animated-15db7644c5b645f195f4d2dc0c5154ec">BB-8
+								droid</a>
+						</li>
+						<li><a
+								href="https://sketchfab.com/3d-models/realistic-dragon-textures-66803f2e8461486987d72d116fe2f714">Dragon</a>
+						</li>
+						<li><a href="https://www.turbosquid.com/3d-models/water-lily-1125153">Water lily</a></li>
+						<li><a href="https://www.blenderkit.com/get-blenderkit/aa8ee570-6b0f-4af1-a0a8-b6173609cbe6/">White
+								flowers</a></li>
+						<br>
+						<li><a href="https://sketchfab.com/3d-models/flower-0fa50cf622f44f2ba59eff6c11cb8fbd">Orange
+								flowers</a></li>
+						<li><a href="https://sketchfab.com/3d-models/geranium-flower-e2b49bd91dcd4bc3aecbd65160a38756">Geranium
+								flowers</a>
+						</li>
+						<li><a href="https://polyhaven.com/a/shrub_sorrel_01">Shrub sorrel</a>
+						</li>
+						<li><a href="https://sketchfab.com/3d-models/birds-3a9bb97be78944f9bffc23fb25c2154e">Birds</a>
+						</li>
+						<br>
+
+						<li><a href="https://polyhaven.com/a/coast_sand_rocks_02">Terrain texture</a></li>
+
+						<li><a
+								href="https://www.blenderkit.com/get-blenderkit/fafe7d30-43c6-40cd-bcb6-b892492d5015/">Rock</a>
+						</li>
+						<li><a
+								href="https://www.blenderkit.com/get-blenderkit/564ae7a1-23b8-4411-8aab-216f842fc132/">Grass</a>
+						</li>
+						<li><a
+								href="https://www.blenderkit.com/asset-gallery-detail/640b088b-634a-4fba-af1f-819e7cbf88a4/2">Dead
+								tree trunk</a></li>
+						<li><a
+								href="https://www.blenderkit.com/asset-gallery?query=category_subtree:model+order:_score+tree+is_free:true">Tree</a>
+						</li>
+						<li><a
+								href="https://sketchfab.com/3d-models/minas-tirith-dac637a09e3e489f820be99a36194466/">Palace</a>
+						</li>
+
+					</ul>
+				</section>
+				<div style="text-align:center;font-weight:bold;
+				font-family: Source Sans Pro, Helvetica, sans-serif;
+				font-weight: 900;
+				font-size: 28px;
+				line-height: 1.5;
+				letter-spacing: 0.075em;
+				text-transform: uppercase;
+				margin: 0 0 1rem 0;">
+					References
+				</div>
+				<div style="display: flex; justify-content: center;">
+					<div style="display: flex; background-color: white; width: 50%;  justify-content: center;">
+						<div style=" width: 33.33333%; text-align:center;">
+							<a href="https://www.scratchapixel.com">scratchapixel</a>
+						</div>
+						<div style=" width: 33.33333%;text-align: center;">
+							<a href="https://www.pbr-book.org">pbr-book</a>
+						</div>
+						<div style=" width: 33.33333%;text-align: center;">
+							<a href="https://www.shadertoy.com">shadertoy</a>
+						</div>
+					</div>
+				</div>
+
+
+			</section>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section class="split contact">
+				<header class="major" style="margin-top: 3rem; ">
+					<h2 style="color: #212931 !important;">Statistics</h2>
+				</header>
+				<div style="display: flex; flex:1 1 auto !important;flex-direction:row;">
+					<div style="width: 33.333333%; text-align: center;">
+						<h2>Rendering time</h2>
+						<h3><a href="#">14hours</h3>
+					</div>
+					<div style="width: 33.333333%; text-align: center;">
+						<h2>Resolution</h2>
+						<h3><a href="#">3840 x 2160 pixels</h3>
+					</div>
+					<div style="width: 33.333333%; text-align: center;">
+						<h2>Number of objects</h2>
+						<h3><a href="#">~1.9million</h2>
+					</div>
+				</div>
+			</section>
+
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Anchit Gupta</li>
+				<li>Xiaojie Zhang</li>
+				<li>Team: Bonsly</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
